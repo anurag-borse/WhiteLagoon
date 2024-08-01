@@ -27,6 +27,30 @@ namespace WhiteLagoon.Web.Controllers
             return View(homeVM);
         }
 
+        [HttpPost]
+        public IActionResult GetVillaByDate(int nights, DateOnly checkInDate)
+        {
+            Thread.Sleep(1000);
+            var vilaList = _unitOfWork.Villa.GetAll(includeProperties: "VillaAmenity").ToList();
+            foreach (var villa in vilaList)
+            {
+                if (villa.Id % 2 == 0)
+                {
+                    villa.IsAvailable = false;
+                }
+            }
+            HomeVM homeVM = new()
+            {
+                CheckInDate = checkInDate,
+                Nights = nights,
+                VillaList = vilaList
+            };
+
+
+            return PartialView("_VillaList",homeVM);
+        }
+
+
         public IActionResult Privacy()
         {
             return View();
