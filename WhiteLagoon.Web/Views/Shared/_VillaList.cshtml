@@ -1,5 +1,4 @@
-﻿
-@model WhiteLagoon.Web.ViewModels.HomeVM
+﻿@model WhiteLagoon.Web.ViewModels.HomeVM
 
 
 
@@ -40,9 +39,7 @@
                                            asp-route-villaId="@villa.Id"
                                            asp-route-checkInDate="@Model.CheckInDate"
                                            asp-route-nights="@Model.Nights"
-                                        
-                                        
-                                        class="btn btn-success form-control btn-block">
+                                           class="btn btn-success form-control btn-block">
                                             Book
                                         </a>
                                     }
@@ -86,6 +83,14 @@
 
                         </div>
                         <div class="modal-footer">
+                            <button asp-action="GeneratePPTExport" asp-controller="Home"
+                                    asp-route-id="@villa.Id" type="submit" class="btn btn-outline-warning">
+                                <i class="bi bi-file-earmark-ppt"></i>
+                                Download Villa PPT
+                            </button>
+
+
+
                             <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
                         </div>
 

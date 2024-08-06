@@ -103,8 +103,10 @@ namespace WhiteLagoon.Web.Controllers
             if (ModelState.IsValid)
             {
                 _unitOfWork.Amenity.Update(amenityVM.Amenity);
+
                 _unitOfWork.Amenity.Save();
-                TempData["success"] = "Amenity Updated Succesfully";
+
+                TempData["success"] = "Amenity Updated Successfully";
                 return RedirectToAction(nameof(Index));
             }
 

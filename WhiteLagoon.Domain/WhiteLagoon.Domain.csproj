@@ -9,6 +9,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Syncfusion.DocIO.Net.Core" Version="26.2.8" />
+    <PackageReference Include="Syncfusion.DocIORenderer.Net.Core" Version="26.2.8" />
+    <PackageReference Include="Syncfusion.Licensing" Version="26.2.8" />
   </ItemGroup>
 
 </Project>

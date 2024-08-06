@@ -17,6 +17,9 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Syncfusion.DocIO.Net.Core" Version="26.2.8" />
+    <PackageReference Include="Syncfusion.DocIORenderer.Net.Core" Version="26.2.8" />
+    <PackageReference Include="Syncfusion.Licensing" Version="26.2.8" />
   </ItemGroup>
 
   <ItemGroup>
