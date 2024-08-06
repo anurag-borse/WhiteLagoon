@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WhiteLagoon.Infrastructure.Repository;
+﻿using WhiteLagoon.Infrastructure.Repository;
 
 namespace WhiteLagoon.Application.Common.Interfaces
 {
@@ -15,6 +10,7 @@ namespace WhiteLagoon.Application.Common.Interfaces
         IAmenityRepository Amenity { get; }
         IBookingRepository Booking { get; }
         IApplicationUserRepository User { get; }
+
         void Save();
     }
 }

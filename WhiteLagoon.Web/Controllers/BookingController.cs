@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Stripe.Checkout;
 using System.Security.Claims;
 using WhiteLagoon.Application.Common.Interfaces;
@@ -12,13 +11,11 @@ namespace WhiteLagoon.Web.Controllers
     [Authorize]
     public class BookingController : Controller
     {
-
         private readonly IUnitOfWork _unitOfWork;
 
         public BookingController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-
         }
 
         public IActionResult Index()
@@ -26,11 +23,9 @@ namespace WhiteLagoon.Web.Controllers
             return View();
         }
 
-
         [Authorize]
         public IActionResult FinalizeBooking(int villaId, DateOnly checkInDate, int nights)
         {
-
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
 
@@ -52,7 +47,6 @@ namespace WhiteLagoon.Web.Controllers
             booking.TotalCost = booking.Villa.Price * nights;
             return View(booking);
         }
-
 
         [Authorize]
         [HttpPost]
@@ -100,8 +94,6 @@ namespace WhiteLagoon.Web.Controllers
             return new StatusCodeResult(303);
         }
 
-
-
         [Authorize]
         public IActionResult BookingConfirmation(int bookingId)
         {
@@ -127,8 +119,6 @@ namespace WhiteLagoon.Web.Controllers
             return View(bookingId);
         }
 
-
-
         [Authorize]
         public IActionResult BookingDetails(int bookingId)
         {
@@ -148,10 +138,6 @@ namespace WhiteLagoon.Web.Controllers
 
             return View(bookingFromDb);
         }
-
-
-
-
 
         [HttpPost]
         [Authorize(Roles = SD.Role_Admin)]
@@ -173,8 +159,6 @@ namespace WhiteLagoon.Web.Controllers
             return RedirectToAction(nameof(BookingDetails), new { bookingId = booking.Id });
         }
 
-
-
         [HttpPost]
         [Authorize(Roles = SD.Role_Admin)]
         public IActionResult CheckOut(Booking booking)
@@ -185,8 +169,6 @@ namespace WhiteLagoon.Web.Controllers
             return RedirectToAction(nameof(BookingDetails), new { bookingId = booking.Id });
         }
 
-
-
         [HttpPost]
         [Authorize(Roles = SD.Role_Admin)]
         public IActionResult CancelBooking(Booking booking)
@@ -196,7 +178,6 @@ namespace WhiteLagoon.Web.Controllers
             TempData["Success"] = "Booking Canceled Successfully";
             return RedirectToAction(nameof(BookingDetails), new { bookingId = booking.Id });
         }
-
 
         private List<int> AssignAvailableVillaNumberByVilla(int villaId)
         {
@@ -213,9 +194,8 @@ namespace WhiteLagoon.Web.Controllers
             return availableVillaNumber;
         }
 
-
-
         #region API CALLS
+
         [HttpGet]
         public IActionResult GetAll(string status)
         {
@@ -236,9 +216,7 @@ namespace WhiteLagoon.Web.Controllers
             }
             return Json(new { data = objbookings });
         }
-        #endregion
 
+        #endregion API CALLS
     }
-
-
 }

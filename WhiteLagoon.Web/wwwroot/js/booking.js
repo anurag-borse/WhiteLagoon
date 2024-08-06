@@ -1,13 +1,10 @@
 ﻿var dataTable;
 
-
 $(document).ready(function () {
     const urlParams = new URLSearchParams(window.location.search);
     const status = urlParams.get('status');
     loadDataTable(status);
-
 });
-
 
 function loadDataTable(status) {
     dataTable = $('#tblBookings').DataTable({

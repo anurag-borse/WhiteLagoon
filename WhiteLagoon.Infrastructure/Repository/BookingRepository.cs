@@ -1,11 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WhiteLagoon.Application.Common.Interfaces;
+﻿using WhiteLagoon.Application.Common.Interfaces;
 using WhiteLagoon.Application.Common.Utility;
 using WhiteLagoon.Domain.Entities;
 using WhiteLagoon.Infrastructure.Data;
@@ -15,19 +8,18 @@ namespace WhiteLagoon.Infrastructure.Repository
     public class BookingRepository : Repository<Booking>, IBookingRepository
     {
         private readonly ApplicationDbContext _context;
+
         public BookingRepository(ApplicationDbContext context) : base(context)
         {
             _context = context;
         }
-
-       
 
         public void Update(Booking entity)
         {
             _context.Update(entity);
         }
 
-        public void UpdateStatus(int bookingId, string bookingStatus,int villaNumber=0)
+        public void UpdateStatus(int bookingId, string bookingStatus, int villaNumber = 0)
         {
             var bookingFromDb = _context.Bookings.FirstOrDefault(b => b.Id == bookingId);
             if (bookingFromDb != null)
@@ -60,6 +52,5 @@ namespace WhiteLagoon.Infrastructure.Repository
                 }
             }
         }
-
     }
 }
