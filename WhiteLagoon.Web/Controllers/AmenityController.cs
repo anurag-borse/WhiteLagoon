@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using WhiteLagoon.Application.Common.Interfaces;
 using WhiteLagoon.Application.Common.Utility;
 using WhiteLagoon.Application.Services.Interface;
 using WhiteLagoon.Domain.Entities;
@@ -21,13 +20,11 @@ namespace WhiteLagoon.Web.Controllers
             _villaService = villaService;
         }
 
-
         public IActionResult Index()
         {
             var amenities = _amenityService.GetAllAmenities();
             return View(amenities);
         }
-
 
         public IActionResult Create()
         {
@@ -49,7 +46,6 @@ namespace WhiteLagoon.Web.Controllers
             // ViewBag.VillaList = list;
             return View(amenityVM);
         }
-
 
         [HttpPost]
         public IActionResult Create(AmenityVM obj)

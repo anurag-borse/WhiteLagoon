@@ -1,5 +1,4 @@
-﻿using SkiaSharp;
-using WhiteLagoon.Application.Common.Interfaces;
+﻿using WhiteLagoon.Application.Common.Interfaces;
 using WhiteLagoon.Application.Common.Utility;
 using WhiteLagoon.Application.Services.Interface;
 using WhiteLagoon.Domain.Entities;
@@ -55,7 +54,7 @@ namespace WhiteLagoon.Application.Services.Implementation
 
         public void UpdateStatus(int bookingId, string bookingStatus, int villaNumber = 0)
         {
-            var bookingFromDb = _unitOfWork.Booking.Get(b => b.Id == bookingId, tracked : true);
+            var bookingFromDb = _unitOfWork.Booking.Get(b => b.Id == bookingId, tracked: true);
             if (bookingFromDb != null)
             {
                 bookingFromDb.Status = bookingStatus;
@@ -74,17 +73,15 @@ namespace WhiteLagoon.Application.Services.Implementation
 
         public void UpdateStripePaymentID(int bookingId, string sessionId, string paymentIntentId)
         {
-            var bookingFromDb = _unitOfWork.Booking.Get(b => b.Id == bookingId, tracked:true);
-
+            var bookingFromDb = _unitOfWork.Booking.Get(b => b.Id == bookingId, tracked: true);
 
             if (bookingFromDb != null)
             {
                 if (!string.IsNullOrEmpty(sessionId))
                 {
                     bookingFromDb.StripeSessionId = sessionId;
-                   
                 }
-                if(!string.IsNullOrEmpty(paymentIntentId))
+                if (!string.IsNullOrEmpty(paymentIntentId))
                 {
                     bookingFromDb.StripePaymentIntentId = paymentIntentId;
                     bookingFromDb.PaymentDate = DateTime.Now;

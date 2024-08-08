@@ -1,5 +1,4 @@
 ﻿using WhiteLagoon.Application.Common.Interfaces;
-using WhiteLagoon.Application.Common.Utility;
 using WhiteLagoon.Domain.Entities;
 using WhiteLagoon.Infrastructure.Data;
 
@@ -18,7 +17,5 @@ namespace WhiteLagoon.Infrastructure.Repository
         {
             _context.Update(entity);
         }
-
-       
     }
 }

@@ -64,7 +64,7 @@ namespace WhiteLagoon.Infrastructure.Repository
                 query = dbSet.AsNoTracking();
             }
             if (filter != null)
-            { 
+            {
                 query = query.Where(filter);
             }
             if (!string.IsNullOrEmpty(includeProperties))

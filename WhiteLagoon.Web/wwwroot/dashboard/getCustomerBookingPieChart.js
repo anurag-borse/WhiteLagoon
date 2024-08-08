@@ -9,13 +9,10 @@ function loadCustomerBookingPieChart() {
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-
-
             loadPieChart("customerBookingsPieChart", data);
 
             $(".chart-spinner").hide();
         }
-
     });
 }
 

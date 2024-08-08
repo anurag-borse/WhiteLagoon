@@ -9,13 +9,10 @@ function loadCustomerAndBookingLineChart() {
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-
-
             loadLineChart("newMembersAndBookingsLineChart", data);
 
             $(".chart-spinner").hide();
         }
-
     });
 }
 
@@ -48,7 +45,6 @@ function loadLineChart(id, data) {
                     colors: '#ddd'
                 }
             }
-
         },
         yaxis: {
             labels: {
@@ -64,10 +60,8 @@ function loadLineChart(id, data) {
         },
         tooltip: {
             theme: 'dark'
-          
         }
     };
-
 
     var chart = new ApexCharts(document.querySelector("#" + id), options);
     chart.render();

@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Syncfusion.Presentation;
-using WhiteLagoon.Application.Common.Interfaces;
-using WhiteLagoon.Application.Common.Utility;
 using WhiteLagoon.Application.Services.Interface;
 using WhiteLagoon.Web.ViewModels;
 
@@ -33,7 +31,6 @@ namespace WhiteLagoon.Web.Controllers
         public IActionResult GetVillaByDate(int nights, DateOnly checkInDate)
         {
             Thread.Sleep(1000);
-
 
             HomeVM homeVM = new()
             {
