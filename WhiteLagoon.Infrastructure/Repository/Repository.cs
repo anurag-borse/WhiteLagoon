@@ -46,7 +46,7 @@ namespace WhiteLagoon.Infrastructure.Repository
                 //Villa, Villa NUmber -- case sensitive
                 foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
                 {
-                    query = query.Include(includeProperty);
+                    query = query.Include(includeProperty.Trim());
                 }
             }
             return query.FirstOrDefault();
@@ -64,7 +64,7 @@ namespace WhiteLagoon.Infrastructure.Repository
                 query = dbSet.AsNoTracking();
             }
             if (filter != null)
-            {
+            { 
                 query = query.Where(filter);
             }
             if (!string.IsNullOrEmpty(includeProperties))
@@ -72,7 +72,7 @@ namespace WhiteLagoon.Infrastructure.Repository
                 //Villa, Villa NUmber -- case sensitive
                 foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
                 {
-                    query = query.Include(includeProperty);
+                    query = query.Include(includeProperty.Trim());
                 }
             }
             return query.ToList();
